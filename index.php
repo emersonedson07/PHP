@@ -1,27 +1,25 @@
 <?php
 
-include __DIR__ "/style.php";
+include __DIR__ . "/style.php";
 
-echo "<h1> Json em PHO </h1>";
+echo "<h1>Json em PHP</h1>";
 
 $array = [
     'nome' => 'Emerson Camargo',
     'canal' => 'Entre nós',
-    'HTML' => ' <title> entre nos </tile>',
-    'categoria' => 'programação/devenvolvimento',
-    'caracters' => '\ teste\' & "teste"',
+    'HTML' => '<title>entre nos</title>',
+    'categoria' => 'programação/desenvolvimento',
+    'caracters' => '\\ teste\\\' & \"teste\"',
     'linguagens' => [
-        'php'
-        'javascript'
+        'php',
+        'javascript',
         'html'
     ],
-
     'filtros' => [
         'php' => 'linguagem php',
-        'atom' => 'edito atom',
+        'atom' => 'editor atom',
         'css' => 'linguagem css'
     ],
-
     'numero' => [
         "10",
         "20",
@@ -33,43 +31,67 @@ $array = [
     ]
 ];
 
+echo "<pre>";
+print_r($array);
+echo "</pre>";
+
+echo "<hr><h2>Gerar JSON</h2>";
+
+$json = json_encode($array, JSON_PRETTY_PRINT |
+                            JSON_UNESCAPED_UNICODE |
+                            JSON_UNESCAPED_SLASHES |
+                            JSON_HEX_TAG |
+                            JSON_HEX_QUOT |
+                            JSON_HEX_AMP |
+                            JSON_HEX_APOS |
+                            JSON_FORCE_OBJECT |
+                            JSON_NUMERIC_CHECK |
+                            JSON_PRESERVE_ZERO_FRACTION);
 
 echo "<pre>";
-print_r ($object);
-echo "</pre>"
+print_r($json);
+echo "</pre>";
 
-echo <hr> <h2> Gerar Json </h2>;
+echo "<hr><h2>Consumir JSON</h2>";
 
-$json = json.enconde(array, json_pretty_print|
-                            json_unescaped_unicode |
-                            json_unescaped_sclashes |
-                            json_hey_tag |
-                            json_hex_quot |
-                            jason_hex_amp |
-                            json_hex_apost |
-                            json_force_objct |
-                            json_numeric_check |
-                            json_preverse_zero_fraction );
+$decode = json_decode($json, true);
 
-echo "<pre>"
-print_r (json)
-echo "</pre>"
+echo "<pre>";
+print_r($decode);
+echo "</pre>";
 
-echo <hr> <h2>  Consumir Json <\<h2>
+echo "<hr><h2>Last Error</h2>";
 
-$decode = json_decode ($json, true);
+$lasterror = json_last_error();
+$lasterrorMsg = json_last_error_msg();
 
-echo "<pre>"
-print_r ($decode)
-echo "</pre>"
+echo "<pre>";
+echo "Código do erro: $lasterror\n";
+echo "Mensagem: $lasterrorMsg\n";
+echo "</pre>";
 
-echo <hr> <h2> Last Error </h2>
+// Lista de todos os erros possíveis
+$jsonErrors = [
+    JSON_ERROR_NONE => 'Nenhum erro',
+    JSON_ERROR_DEPTH => 'Profundidade máxima excedida',
+    JSON_ERROR_STATE_MISMATCH => 'JSON inválido ou mal formado',
+    JSON_ERROR_CTRL_CHAR => 'Caractere de controle inesperado encontrado',
+    JSON_ERROR_SYNTAX => 'Erro de sintaxe',
+    JSON_ERROR_UTF8 => 'Caracteres UTF-8 malformados, possível codificação incorreta',
+    JSON_ERROR_RECURSION => 'Uma ou mais referências recursivas na estrutura',
+    JSON_ERROR_INF_OR_NAN => 'NAN ou INF em um valor flutuante',
+    JSON_ERROR_UNSUPPORTED_TYPE => 'Tipo de dado não suportado',
+    JSON_ERROR_INVALID_PROPERTY_NAME => 'Nome de propriedade inválido',
+    JSON_ERROR_UTF16 => 'Caracteres UTF-16 malformados, possível codificação incorreta'
+];
 
-$lasterro = jason_last_error ();
-
-echo "<pre>"
-print_r ($lasterror)
-;cho "</pre>"
+echo "<hr><h2>Lista de Erros JSON</h2>";
+echo "<pre>";
+foreach ($jsonErrors as $code => $message) {
+    echo "[$code] => $message\n";
+}
+echo "</pre>";
+?>
 
 
 
