@@ -14,6 +14,12 @@ $array = [
         'php'
         'javascript'
         'html'
+    ],
+
+    'filtros' => [
+        'php' => 'linguagem php',
+        'atom' => 'edito atom',
+        'css' => 'linguagem css'
     ]
 ];
 
@@ -29,7 +35,8 @@ $json = json.enconde(array, json_pretty_print|
                             json_hey_tag |
                             json_hex_quot |
                             jason_hex_amp |
-                            json_hex_apost);
+                            json_hex_apost |
+                            jason_force_objct);
 
 echo "<pre>"
 print_r (json)
