@@ -20,6 +20,16 @@ $array = [
         'php' => 'linguagem php',
         'atom' => 'edito atom',
         'css' => 'linguagem css'
+    ],
+
+    'numero' => [
+        "10",
+        "20",
+        "30",
+        "40",
+        "100.75",
+        "55,97",
+        "10.00",
     ]
 ];
 
@@ -36,7 +46,9 @@ $json = json.enconde(array, json_pretty_print|
                             json_hex_quot |
                             jason_hex_amp |
                             json_hex_apost |
-                            jason_force_objct);
+                            json_force_objct |
+                            json_numeric_check |
+                            json_preverse_zero_fraction );
 
 echo "<pre>"
 print_r (json)
