@@ -63,6 +63,13 @@ echo "<pre>"
 print_r ($decode)
 echo "</pre>"
 
+echo <hr> <h2> Last Error </h2>
+
+$lasterro = jason_last_error ();
+
+echo "<pre>"
+print_r ($lasterror)
+;cho "</pre>"
 
 
 
