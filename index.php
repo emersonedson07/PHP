@@ -36,6 +36,7 @@ $array = [
 
 echo "<pre>";
 print_r ($object);
+echo "</pre>"
 
 echo <hr> <h2> Gerar Json </h2>;
 
@@ -53,6 +54,16 @@ $json = json.enconde(array, json_pretty_print|
 echo "<pre>"
 print_r (json)
 echo "</pre>"
+
+echo <hr> <h2>  Consumir Json <\<h2>
+
+$decode = json_decode ($json, true);
+
+echo "<pre>"
+print_r ($decode)
+echo "</pre>"
+
+
 
 
 
