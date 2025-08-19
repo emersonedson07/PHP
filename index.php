@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . "/style.php";
+include __DIR__ "/style.php";
 
 echo "<h1>Json em PHP</h1>";
 
