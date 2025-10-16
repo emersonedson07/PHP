@@ -1,24 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORMULARIO</title>
+  <meta charset="utf-8">
+  <title>Formulário</title>
 </head>
 <body>
-    <h1>Formulário - GET</h1>
-    <form action="processa_get.php" method="get">
-        Nome: <input type="text" name="nome"><br><br>
-        Idade: <input type="number" name="idade"><br><br>
-        Email: <input type="email" name="email"><br><br>
-        Faixa Etária:
-        <select name="faixa_etaria">
-            <option value="bebe">Bebê</option>
-            <option value="crianca">Criança</option>
-            <option value="adolescente">Adolescente</option>
-            <option value="adulto">Adulto</option>
-        </select><br><br>
-        <input type="submit" value="Enviar">
-    </form>
+  <h1>Formulário</h1>
+
+  <form id="f" action="processa_post.php" method="post">
+    <label>Nome:
+      <input type="text" name="nome" required>
+    </label><br><br>
+
+    <label>Email:
+      <input type="email" name="email" required>
+    </label><br><br>
+
+    <label>Idade:
+      <input type="number" name="idade" min="0" max="120" required>
+    </label><br><br>
+
+    <label>Faixa Etária:
+      <select name="faixa" required>
+        <option value="Bebê">Bebê</option>
+        <option value="Criança">Criança</option>
+        <option value="Adolescente">Adolescente</option>
+        <option value="Adulto">Adulto</option>
+      </select>
+    </label><br><br>
+
+    <button type="submit" formaction="processa_get.php" formmethod="get">Enviar com GET</button>
+    <button type="submit" formaction="processa_post.php" formmethod="post">Enviar com POST</button>
+  </form>
 </body>
 </html>

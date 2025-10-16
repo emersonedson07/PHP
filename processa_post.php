@@ -3,13 +3,13 @@ require_once 'valida_campos.php';
 require_once 'valida_idade.php';
 require_once 'valida_faixa.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
-  echo 'Método não permitido. Envie o formulário via GET.';
+  echo 'Método não permitido. Envie o formulário via POST.';
   exit;
 }
 
-$dados = $_GET;
+$dados = $_POST;
 
 
 $erros = validar_campos($dados);
@@ -20,7 +20,6 @@ if ($msg = validar_idade($dados['idade'] ?? null)) {
 }
 $idadeInt = isset($dados['idade']) && is_numeric($dados['idade']) ? (int)$dados['idade'] : null;
 
-
 if ($idadeInt !== null) {
   if ($msg = validar_faixa($dados['faixa'] ?? null, $idadeInt)) {
     $erros[] = $msg;
@@ -28,7 +27,7 @@ if ($idadeInt !== null) {
 }
 
 if ($erros) {
-  echo "<h3>Erros encontrados (GET):</h3><ul>";
+  echo "<h3>Erros encontrados (POST):</h3><ul>";
   foreach ($erros as $e) {
     echo '<li>' . htmlspecialchars($e, ENT_QUOTES, 'UTF-8') . '</li>';
   }
@@ -41,7 +40,7 @@ $email = htmlspecialchars($dados['email'], ENT_QUOTES, 'UTF-8');
 $faixa = htmlspecialchars($dados['faixa'], ENT_QUOTES, 'UTF-8');
 $idade = $idadeInt;
 
-echo "<h3>Dados recebidos (GET) com sucesso!</h3>";
+echo "<h3>Dados recebidos (POST) com sucesso!</h3>";
 echo "Nome: {$nome}<br>";
 echo "Email: {$email}<br>";
 echo "Idade: {$idade}<br>";
